@@ -1,0 +1,120 @@
+{
+  "name": "docomoinnovations/facade",
+  "description": "Composer file to build Façade",
+  "type": "drupal-profile",
+  "license": "GPL-2.0-or-later",
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "authors": [
+    {
+      "name": "DOCOMO Innovations, Inc.",
+      "homepage": "https://www.docomoinnovations.com",
+      "role": "Maintainer"
+    }
+  ],
+  "support": {
+    "issues": "http://drupal.org/project/issues/facade",
+    "source": "http://cgit.drupalcode.org/facade"
+  },
+  "repositories": {
+    "drupal": {
+      "type": "composer",
+      "url": "https://packages.drupal.org/8"
+    },
+    "cloud_orchestrator": {
+      "type": "package",
+      "package": {
+        "name": "drupal/cloud_orchestrator",
+        "version": "dev-6.x",
+        "type": "drupal-profile",
+        "dist": {
+          "url": "https://ftp.drupal.org/files/projects/cloud_orchestrator-6.x-dev.zip",
+          "type": "zip"
+        }
+      }
+    }
+  },
+  "config": {
+    "preferred-install": {
+      "drupal/core": "dist"
+    },
+    "allow-plugins": {
+      "composer/*": true,
+      "cweagans/composer-patches": true,
+      "dealerdirect/phpcodesniffer-composer-installer": true,
+      "drupal/*": true,
+      "php-http/discovery": true
+    }
+  },
+  "extra": {
+    "drupal-scaffold": {
+      "locations": {
+        "web-root": "docroot/"
+      }
+    },
+    "patches": {
+      "drupal/memcache": {
+        "Fixes an issue at https://www.drupal.org/i/3355505": "https://git.drupalcode.org/project/memcache/-/merge_requests/14.diff"
+      }
+    },
+    "installer-paths": {
+      "docroot/core": [
+        "type:drupal-core"
+      ],
+      "docroot/profiles/contrib/{$name}": [
+        "type:drupal-profile"
+      ],
+      "docroot/modules/contrib/{$name}": [
+        "type:drupal-module"
+      ],
+      "docroot/themes/contrib/{$name}": [
+        "type:drupal-theme"
+      ],
+      "docroot/libraries/{$name}": [
+        "type:drupal-library",
+        "type:bower-asset",
+        "type:npm-asset"
+      ],
+      "docroot/modules/custom/{$name}": [
+        "type:drupal-custom-module"
+      ],
+      "docroot/themes/custom/{$name}": [
+        "type:drupal-custom-theme"
+      ],
+      "drush/contrib/{$name}": [
+        "type:drupal-drush"
+      ]
+    }
+  },
+  "require": {
+    "composer/installers": "^1",
+    "cweagans/composer-patches": "^1",
+    "drupal/core-composer-scaffold": "^10.0",
+    "drupal/core-project-message": "^10.0",
+    "drupal/core-recommended": "^10.0",
+    "drupal/admin_toolbar": "^3",
+    "drupal/cloud": "6.x-dev",
+    "drupal/cloud_orchestrator": "dev-6.x",
+    "drupal/copyright_footer": "^3",
+    "drupal/ctools": "^4",
+    "drupal/facade": "1.0.x-dev",
+    "drupal/ldap": "4.x-dev",
+    "drupal/login_destination": "^2.0@beta",
+    "drupal/memcache": "^2",
+    "drupal/module_filter": "^4",
+    "drupal/module_permissions": "^3",
+    "drupal/openid_connect_daccount": "1.x-dev@dev",
+    "drupal/password_policy": "^4",
+    "drupal/queue_ui": "^3",
+    "drupal/roleassign": "^2",
+    "drupal/simple_oauth": "^5",
+    "drush/drush": "^11"
+  },
+  "require-dev": {
+    "dmore/behat-chrome-extension": "*",
+    "docomoinnovations/drupal-extension": "*",
+    "drupal/coder": "*"
+  },
+  "autoload-dev": {
+  }
+}
